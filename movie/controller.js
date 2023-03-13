@@ -1,7 +1,7 @@
 'use strict';
 import { getAll , remove, get, save } from "./model.js";
 //import { render } from "./view.js";
-import { render as form } from "./form.js";
+//import { render as form } from "./form.js";
 
 export async function listAction(req, res) {
     let movies = await getAll();
@@ -19,11 +19,14 @@ export async function formAction(req, res) {
 
     if(req.params.id) {
         movie = await get(parseInt(req.params.id));
-        console.log(movie);
+        res.render('form', {title: 'Bearbeitung-Formular', movie});
+    }else {
+        res.render('form', {title: 'Hinzufügen-Formular', movie})
     }
 
-    const body = form(movie);
-    res.send(body);
+    // const body = form(movie);
+    // res.send(body);
+   
    
 }
 
