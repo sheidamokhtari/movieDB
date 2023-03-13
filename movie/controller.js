@@ -4,8 +4,8 @@ import { getAll , remove, get, save } from "./model.js";
 import { render as form } from "./form.js";
 
 export async function listAction(req, res) {
-    // 
-    res.render('index', {title: 'Filmdatenbank' });
+    let movies = await getAll();
+    res.render('index', {title: 'Filmdatenbank', movies: movies });
 }
 
 export async function removeAction(req, res) {
