@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Movie List</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1><%= title %></h1>
+    <table>
+        <thead><tr><th>Id</th><th>Title</th><th>Year</th><td></td></tr></thead>
+        <tbody><% movies.map((movie) => %>
+            <tr>
+                <td><%= movie.id %></td><td><%= movie.title %></td><td><%= movie.year %></td>
+                <td><a href="/movie/delete/<%= movie.id %>">&times;</a></td>
+                <td><a href="/movie/form/<%= movie.id %>">&#9998;</a></td>
+            </tr>
+            <% ).join("") %>
+        </tbody>
+    </table>
+    <a class="new" href="/movie/form">neuer Eintrag</a>
+</body>
+</html>
